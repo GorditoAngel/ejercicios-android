@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ControlesBasicos</string>
+    <string name="titulo">Caso práctico de controles básicos</string>
+    <string name="ToggleOn">Activado</string>
+    <string name="ToggleOff">Desactivado</string>
+    <string name="checkNegrita">Negrita</string>
+    <string name="checkCursiva">Cursiva</string>
+    <string name="textoBoton">Boton</string>
+    <string name="radioIngles">Inglés</string>
+    <string name="radioEspanol">Español</string>
+    <string name="radioPortugues">Portugués</string>
+    <string name="radioAleman">Alemán</string>
+    <string name="radioItaliano">Italiano</string>
+    <string name="textoResultado">Este es el resultado</string>
+
+</resources>
