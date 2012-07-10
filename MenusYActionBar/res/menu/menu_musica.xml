@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 
+        android:id="@+id/buscar" 
+        android:title="@string/buscar" 
+        android:icon="@drawable/note">
+        <menu>
+            <item android:id="@+id/grabaciones"
+                  android:title="@string/grabaciones" />
+            <item android:id="@+id/movil"
+                  android:title="@string/musica_movil" />
+            <item android:id="@+id/internet"
+                  android:title="@string/musica_internet" />
+        </menu>
+    </item>
+    <item 
+        android:id="@+id/escuchar" 
+        android:title="@string/escuchar" 
+        android:icon="@drawable/listen"></item>
+    <item 
+        android:id="@+id/grabar" 
+        android:title="@string/grabar" 
+        android:icon="@drawable/mic"></item>    
+    <item 
+        android:id="@+id/cd_vinilo" 
+        android:title="@string/vinilo" 
+        android:icon="@drawable/vinilo"></item>
+</menu>
