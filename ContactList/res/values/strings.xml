@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, ContactListActivity!</string>
+    <string name="app_name">ContactList</string>
+    <string name="tituloIngreso">Ingreso de Usuario</string>
+    <string name="nombre">Nombre:</string>
+    <string name="apellido">Apellido:</string>
+    <string name="celular">Celular:</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="editNombre">edit Nombre</string>
+    <string name="editApellido">edit apellido</string>
+    <string name="editCelular"/>
+
+</resources>
