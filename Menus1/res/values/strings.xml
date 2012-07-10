@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Ejemplos Menús. Ejemplo1</string>
+    <string name="app_name">MenusYActionBar</string>
+    <string name="buscar">Buscar</string>
+    <string name="grabar">Grabar</string>
+    <string name="escuchar">Escuchar</string>
+    <string name="vinilo">Vinilo</string>
+    <string name="enviar">Enviar</string>
+    <string name="borrar">Borrar</string>
+    <string name="cd">CD</string>
+    <string name="grabaciones">Grabaciones</string>
+    <string name="musica_movil">Música en Móvil</string>
+    <string name="musica_internet">Música en Internet</string>    
+    
+    <string-array name="musica_array">
+        <item>Foo Fighters</item>
+		<item>Fun Lovin Criminals</item>
+		<item>Fundamental</item>
+		<item>Garbaje</item>
+		<item>Green Day</item>
+		<item>Heroes del Silencio</item>
+		<item>Hevia</item>
+		<item>Ibiza Chill Out</item>
+		<item>Indi Sound</item>
+		<item>Janis Joplins</item>
+		<item>Jarabe de Palo</item>
+		<item>Jazz Contemporaneo</item>
+		<item>Jazz ECM</item>
+		<item>Jimi Hendrix</item>
+		<item>Kula Shaker</item>
+		<item>Lemonheads</item>
+		<item>Mandragora</item>
+		<item>Manolo García</item>
+		<item>Manu Chao</item>
+		<item>Mark Knofler</item>
+		<item>Mike Oldfield</item>
+		<item>Mississippi</item>
+		<item>Nada Surf</item>
+		<item>Nirvana</item>
+		<item>No Doubt</item>
+		<item>Oasis</item>
+		<item>Ocean Colour Scene</item>
+		<item>Off Spring</item>
+		<item>Pixies</item>
+		<item>Plachi (Disco-Bar)</item>
+		<item>Presidents Of The USA</item>
+		<item>Pulp </item>
+		<item>Radiohead</item>
+		<item>Ramones</item>
+		<item>Reef</item>
+		<item>REM</item>
+		<item>Revolver</item>
+		<item>Rodriguez</item>
+		<item>Safri Duo</item>
+		<item>Santana, Carlos</item>
+		<item>Scorpions</item>
+		<item>Seguridad Social</item>
+		<item>Sidone</item>
+		<item>Siniestro Total</item>
+		<item>Skunk Anansie</item>
+    </string-array>	
+
+</resources>
