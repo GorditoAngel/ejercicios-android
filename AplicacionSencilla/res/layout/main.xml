@@ -3,9 +3,31 @@
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
 		android:orientation="vertical" >
+
 	<TextView
-		android:id="@+id/textView"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		/>
+	    android:id="@+id/main_textView"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/text_edit_main"
+	    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	<TextView
+	    android:id="@+id/main_textView_velocidad"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/text_edit_main_2"
+	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+		android:layout_height="1dip"
+		android:orientation="vertical"
+		android:background="#ffff"></LinearLayout>
+	<TextView
+	    android:id="@+id/main_textView_dxdy"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/text_edit_main_3"
+	    android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </LinearLayout>
