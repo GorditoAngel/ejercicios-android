@@ -52,7 +52,15 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/text_edit_main_dxdy"
 	    android:textAppearance="?android:attr/textAppearanceSmall"
-	    android:layout_alignParentBottom="true" />
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true" />
+	<TextView
+	    android:id="@+id/main_textView_dxdy2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/text_edit_main_dxdy"
+	    android:textAppearance="?android:attr/textAppearanceSmall"
+	    android:layout_above="@id/main_textView_dxdy" />
 	
 
 </RelativeLayout>
