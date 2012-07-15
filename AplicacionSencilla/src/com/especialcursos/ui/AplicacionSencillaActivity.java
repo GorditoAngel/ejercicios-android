@@ -16,7 +16,7 @@ public class AplicacionSencillaActivity extends Activity {
 	TextView textView = null;
 	TextView textView_velocidad = null;
 	TextView textView_dxdy = null;
-	
+	TextView textView_dxdy2 = null;
 	TextView textView2 = null;
 	TextView textView_velocidad2 = null;
 	
@@ -34,6 +34,7 @@ public class AplicacionSencillaActivity extends Activity {
 		textView = (TextView) findViewById(R.id.main_textView);
 		textView_velocidad = (TextView) findViewById(R.id.main_textView_velocidad);
 		textView_dxdy = (TextView) findViewById(R.id.main_textView_dxdy);
+		textView_dxdy2 = (TextView) findViewById(R.id.main_textView_dxdy2);
 		
 		textView2 = (TextView) findViewById(R.id.main_textView2);
 		textView_velocidad2 = (TextView) findViewById(R.id.main_textView_velocidad2);
@@ -41,8 +42,8 @@ public class AplicacionSencillaActivity extends Activity {
 		res = getResources();
 		lista_dedos = new ArrayList<Dedito>();
 		
-		//Como maximo 2 dedos
-		for (int i=0; i < 2; i++){
+		//Como maximo 10 dedos
+		for (int i=0; i < 10; i++){
 			Dedito dedillo = new Dedito();
 			lista_dedos.add(dedillo);
 		}
@@ -51,57 +52,54 @@ public class AplicacionSencillaActivity extends Activity {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		int index = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK)
+		int pointerIndex = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK)
 				>> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-		final int action = event.getAction();
-		if (index < 2){
-			Dedito dedito_pulsado = lista_dedos.get(index);
-			
-			switch (action & MotionEvent.ACTION_MASK) {
-				case MotionEvent.ACTION_DOWN:
-					dedito_pulsado.setID(event.getPointerId(index));
-					dedito_pulsado.setTiempoInicio(Calendar.getInstance());
-					dedito_pulsado.setX_mov((float)event.getX());
-					dedito_pulsado.setY_mov((float)event.getY());
-					dedito_pulsado.setX_i((int) dedito_pulsado.getX_mov());
-					dedito_pulsado.setY_i((int) dedito_pulsado.getY_mov());
-					dedito_pulsado.setInstante(Calendar.getInstance());
-					break;
-				case MotionEvent.ACTION_POINTER_DOWN:
-					dedito_pulsado.setID(event.getPointerId(index));
-					dedito_pulsado.setTiempoInicio(Calendar.getInstance());
-					dedito_pulsado.setX_mov((float)event.getX());
-					dedito_pulsado.setY_mov((float)event.getY());
-					dedito_pulsado.setX_i((int) dedito_pulsado.getX_mov());
-					dedito_pulsado.setY_i((int) dedito_pulsado.getY_mov());
-					dedito_pulsado.setInstante(Calendar.getInstance());
-					break;
-				case MotionEvent.ACTION_MOVE:{
-					final float x = event.getX(index);
-					final float y = event.getY(index);
+		final int action = (event.getAction() & MotionEvent.ACTION_MASK);
+		int pointerId = event.getPointerId(pointerIndex);
+		switch (action) {
+			case MotionEvent.ACTION_DOWN:
+			case MotionEvent.ACTION_POINTER_DOWN:
+				lista_dedos.get(pointerId).setID(event.getPointerId(pointerId));
+				lista_dedos.get(pointerId).setTiempoInicio(Calendar.getInstance());
+				lista_dedos.get(pointerId).setX_mov((float)event.getX(pointerIndex));
+				lista_dedos.get(pointerId).setY_mov((float)event.getY(pointerIndex));
+				lista_dedos.get(pointerId).setX_i((int) lista_dedos.get(pointerId).getX_mov());
+				lista_dedos.get(pointerId).setY_i((int) lista_dedos.get(pointerId).getY_mov());
+				lista_dedos.get(pointerId).setInstante(Calendar.getInstance());
+				break;
+			case MotionEvent.ACTION_MOVE:{
+				int pointerCount = event.getPointerCount();
+				for (int i = 0; i < pointerCount; i++){
+					pointerIndex = i;
+					pointerId = event.getPointerId(pointerIndex);
+					
+					final float x = event.getX(pointerIndex);
+					final float y = event.getY(pointerIndex);
 					Calendar final_mov = Calendar.getInstance();
 					//distancia movida
-					final float dx = x - lista_dedos.get(index).getX_mov();
-					final float dy = y - lista_dedos.get(index).getY_mov();
+					final float dx = x - lista_dedos.get(pointerId).getX_mov();
+					final float dy = y - lista_dedos.get(pointerId).getY_mov();
 					long dt = (final_mov.getTimeInMillis() - 
-							lista_dedos.get(index).getInstante().getTimeInMillis());
-					lista_dedos.get(index).setInstante(Calendar.getInstance());
-					lista_dedos.get(index).setX_mov(x);
-					lista_dedos.get(index).setY_mov(y);
+							lista_dedos.get(pointerId).getInstante().getTimeInMillis());
+					lista_dedos.get(pointerId).setInstante(Calendar.getInstance());
+					lista_dedos.get(pointerId).setX_mov(x);
+					lista_dedos.get(pointerId).setY_mov(y);
 					//escribir movimientos
-					escribirMovimiento(dx, dy, dt);
-					break;
+					escribirMovimiento(dx, dy, dt, pointerId);
 				}
-				case MotionEvent.ACTION_UP:
-				case MotionEvent.ACTION_POINTER_UP:
-					dedito_pulsado.setTiempoFinal(Calendar.getInstance());
-					dedito_pulsado.setX_f((int)event.getX());
-					dedito_pulsado.setY_f((int)event.getY());
-					//escribir resultados
-					escribirResultado_dedo(dedito_pulsado);
-					escribirVelocidad(dedito_pulsado);
-					break;
+					
+				break;
 			}
+			case MotionEvent.ACTION_UP:
+			case MotionEvent.ACTION_POINTER_UP:
+			case MotionEvent.ACTION_CANCEL:
+				lista_dedos.get(pointerId).setTiempoFinal(Calendar.getInstance());
+				lista_dedos.get(pointerId).setX_f((int)event.getX(pointerIndex));
+				lista_dedos.get(pointerId).setY_f((int)event.getY(pointerIndex));
+				//escribir resultados
+				escribirResultado_dedo(lista_dedos.get(pointerId));
+				escribirVelocidad(lista_dedos.get(pointerId));
+				break;
 		}
 	return true;
 	}
@@ -115,7 +113,7 @@ public class AplicacionSencillaActivity extends Activity {
 					"ms. "+ res.getString(R.string.desde) +" (x1,y1) = (" 
 						+ dedito_pulsado.getX_i() + "," + dedito_pulsado.getY_i() +") " +
 					"a (x2,y2) = ("+ dedito_pulsado.getX_f() + "," + dedito_pulsado.getY_f() +").") ;
-		else
+		else if (dedito_pulsado.getID() == 1)
 			textView2.setText(res.getString(R.string.has_pulsado) + diferencia + 
 					"ms. "+ res.getString(R.string.desde) +" (x1,y1) = (" 
 					+ dedito_pulsado.getX_i() + "," + dedito_pulsado.getY_i() +") " +
@@ -130,13 +128,19 @@ public class AplicacionSencillaActivity extends Activity {
 		if (dedito_pulsado.getID() == 0)
 			textView_velocidad.setText("(\u0394x,\u0394y) = ("+X+","+Y+"). " + "\n" + res.getString(R.string.vel_med) 
 					+ Float.toString(distancia/((t2-t1)/1000F))+ " px/s.");
-		else
+		else if (dedito_pulsado.getID() == 1)
 			textView_velocidad2.setText("(\u0394x,\u0394y) = ("+X+","+Y+"). " + "\n" + res.getString(R.string.vel_med) 
 					+ Float.toString(distancia/((t2-t1)/1000F))+ " px/s.");
 		
 	}
-	private void escribirMovimiento(float dx, float dy, float dt){
+	private void escribirMovimiento(float dx, float dy, float dt, int idx){
+		if (idx == 0)
 		textView_dxdy.setText("(dx,dy) = ("+ dx+ ","+dy+"), \n" +
+				"(Vx,Vy) = ("+ Float.toString(dx*1000F/dt)+ 
+				","+ Float.toString(dy*1000F/dt)+")px/s. \n" +
+				"dt = " + dt + "ms." );
+		else if (idx == 1)
+		textView_dxdy2.setText("(dx,dy) = ("+ dx+ ","+dy+"), \n" +
 				"(Vx,Vy) = ("+ Float.toString(dx*1000F/dt)+ 
 				","+ Float.toString(dy*1000F/dt)+")px/s. \n" +
 				"dt = " + dt + "ms." );
