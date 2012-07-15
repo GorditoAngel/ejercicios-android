@@ -29,6 +29,8 @@ public class ItemDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	
+    	//TODO Creoq eu aqui es donde hay que seleccionar lso layouts
         View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.content);
