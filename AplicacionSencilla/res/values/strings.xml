@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AplicacionSencilla</string>
-    <string name="text_edit_main">…</string>
-    <string name="text_edit_main_2">…</string>
+    <string name="text_edit_main">Dedo1</string>
+    <string name="text_edit_main_2">Dedo2</string>
     <string name="text_edit_main_3">…</string>
-
+    <string name="text_edit_main_velocidad">.</string>
+    <string name="text_edit_main_dxdy">.</string>
+    <string name="text_edit_main_velocidad_2">.</string>
+    <string name="text_edit_main_dxdy_2">.</string>
+    <string name="has_pulsado">Has pulsado la pantalla durante </string>
+    <string name="desde">Desde</string>
+    <string name="vel_med">vel. media = </string>
+    
 </resources>

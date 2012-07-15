@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
 		android:orientation="vertical" >
@@ -9,25 +9,50 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/text_edit_main"
-	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	    android:textAppearance="?android:attr/textAppearanceSmall"
+	     />
 
 	<TextView
 	    android:id="@+id/main_textView_velocidad"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="@string/text_edit_main_2"
-	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	    android:text="@string/text_edit_main_velocidad"
+	    android:textAppearance="?android:attr/textAppearanceSmall" 
+	    android:layout_below="@id/main_textView"/>
 	
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/main_separador"
 	    android:layout_width="fill_parent"
 		android:layout_height="1dip"
 		android:orientation="vertical"
-		android:background="#ffff"></LinearLayout>
+		android:background="#ffff"
+		android:layout_below="@id/main_textView_velocidad"></LinearLayout>
+	
+	<TextView
+	    android:id="@+id/main_textView2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/text_edit_main_2"
+	    android:textAppearance="?android:attr/textAppearanceSmall" 
+	    android:layout_below="@id/main_separador"/>
+
+
+	<TextView
+	    android:id="@+id/main_textView_velocidad2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/text_edit_main_velocidad_2"
+	    android:textAppearance="?android:attr/textAppearanceSmall" 
+	    android:layout_below="@id/main_textView2"/>
+	
+	
 	<TextView
 	    android:id="@+id/main_textView_dxdy"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="@string/text_edit_main_3"
-	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	    android:text="@string/text_edit_main_dxdy"
+	    android:textAppearance="?android:attr/textAppearanceSmall"
+	    android:layout_alignParentBottom="true" />
+	
 
-</LinearLayout>
+</RelativeLayout>
