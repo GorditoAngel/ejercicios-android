@@ -42,7 +42,7 @@ public class ControlesBasicosActivity extends Activity {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				// TODO Auto-generated method stub
 				RadioButton radio = (RadioButton)findViewById(checkedId);
-				texto.setText("El idioma seleccionado es: " + radio.getText());
+				texto.setText(getResources().getString(R.string.main_texto_resutado) + radio.getText());
 //				texto.setBackgroundColor(2371125);
 			}
 		};

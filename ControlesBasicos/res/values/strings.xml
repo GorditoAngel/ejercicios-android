@@ -13,5 +13,6 @@
     <string name="radioAleman">Alemán</string>
     <string name="radioItaliano">Italiano</string>
     <string name="textoResultado">Este es el resultado</string>
+    <string name="main_texto_resutado">El idioma seleccionado es: </string>
 
 </resources>
