@@ -1,93 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/luna_llena"
     android:orientation="vertical"
-    android:background="#FF345678" >
+    android:paddingRight="2dip" >
 
+"
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tituloIngreso"
         android:gravity="center"
+        android:text="@string/tituloIngreso"
+        android:textColor="#585858"
         android:textSize="10pt"
-        android:textStyle="bold" />
+        android:textStyle="bold|italic" />
     
     <LinearLayout
         android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal">
+
         <TextView
             android:id="@+id/textNombre"
             android:layout_width="68pt"
-        	android:layout_height="fill_parent"
-        	android:text="@string/nombre"
-        	android:layout_weight="1"
-        	android:textSize="10pt"
-        	android:layout_centerHorizontal="true"
-        	android:layout_centerVertical="true" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/nombre"
+            android:textColor="#585858"
+            android:textSize="10pt" />
+
         <EditText
             android:id="@+id/editNombre"
             android:layout_width="fill_parent"
-        	android:layout_height="16pt"
-        	android:inputType="text"
-        	android:text="@string/editNombre"
-        	android:layout_weight="2"
-        	android:textSize="8pt"
-        	android:textColor="#0000FF"
-        	android:typeface="monospace" />
+            android:layout_height="16pt"
+            android:layout_marginBottom="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginTop="2dip"
+            android:layout_weight="2"
+            android:background="#ffff"
+            android:inputType="text"
+            android:paddingLeft="2dip"
+            android:text="@string/editNombre"
+            android:textColor="#0000FF"
+            android:textSize="8pt"
+            android:typeface="monospace" />
+
     </LinearLayout>
     
     <LinearLayout
         android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal">
+
         <TextView
             android:id="@+id/textApellido"
             android:layout_width="68pt"
-        	android:layout_height="fill_parent"
-        	android:text="@string/apellido"
-        	android:layout_weight="1"
-        	android:textSize="10pt"
-        	android:layout_centerHorizontal="true"
-        	android:layout_centerVertical="true"
-        	android:typeface="serif"
-        	 />
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/apellido"
+            android:textColor="#585858"
+            android:textSize="10pt"
+            android:typeface="serif" />
+
         <EditText
             android:id="@+id/editApellido"
             android:layout_width="fill_parent"
-        	android:layout_height="16pt"
-        	android:inputType="text"
-        	android:text="@string/editApellido"
-        	android:layout_weight="2"
-        	android:textSize="8pt"
-        	android:textColor="#0000FF"
-        	android:textStyle="bold"
-        	android:typeface="serif" />
+            android:layout_height="16pt"
+            android:layout_marginBottom="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginTop="2dip"
+            android:layout_weight="2"
+            android:background="#ffff"
+            android:inputType="text"
+            android:paddingLeft="2dip"
+            android:text="@string/editApellido"
+            android:textColor="#0000FF"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
     </LinearLayout>
     
     <LinearLayout
         android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal">
+
         <TextView
             android:id="@+id/textCelular"
             android:layout_width="68pt"
-        	android:layout_height="fill_parent"
-        	android:text="@string/celular"
-        	android:layout_weight="1"
-        	android:textSize="10pt"
-        	android:layout_centerHorizontal="true"
-        	android:layout_centerVertical="true" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/celular"
+            android:textColor="#585858"
+            android:textSize="10pt" />
+
         <EditText
             android:id="@+id/editCelular"
-             android:layout_width="fill_parent"
-        	android:layout_height="16pt"
-        	android:inputType="text"
-        	android:text="@string/editCelular"
-        	android:layout_weight="2"
-        	android:textSize="8pt" />
+            android:layout_width="fill_parent"
+            android:layout_height="16pt"
+            android:layout_marginBottom="2dip"
+            android:layout_marginRight="2dip"
+            android:layout_marginTop="2dip"
+            android:layout_weight="2"
+            android:background="#ffff"
+            android:inputType="text"
+            android:paddingLeft="2dip"
+            android:text="@string/editCelular"
+            android:textSize="8pt" />
+
     </LinearLayout>
     
     <RelativeLayout
