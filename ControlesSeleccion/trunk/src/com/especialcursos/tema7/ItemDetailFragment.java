@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,25 +42,35 @@ public class ItemDetailFragment extends Fragment {
         	 
         	//TODO Creoq eu aqui es donde hay que seleccionar lso layouts
         	if (mItem.content.equals("Spinner")){
+        		//Especificamos el root view y lo inflamos
         		rootView = inflater.inflate(R.layout.control_spinner, container, false);
+        		//Crea Spinner
         		Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner_detail);
-        		// Create an ArrayAdapter using the string array and a default spinner layout
+        		//ArrayAdapter a partir de las lista de resources y con el comodin sinple_spinner_item
         		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
         		        R.array.fisicos_array, android.R.layout.simple_spinner_item);
-        		// Specify the layout to use when the list of choices appears
+        		//Especificar el layout para mostrar la lista de opciones.
         		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        		// Apply the adapter to the spinner
+        		//aplicar el adapter
         		spinner.setAdapter(adapter);
         	}else if (mItem.content.equals("List View")){
         		rootView = inflater.inflate(R.layout.control_listview, container, false);
+        		//Crea List view y adapter a partir de lis-view_detail y fisicos_array
+        		//He utilizado como view de cada item simple_list_item_1
         		ListView list = (ListView) rootView.findViewById(R.id.list_view_detail);
-        		// Create an ArrayAdapter using the string array and a default spinner layout
-        		ListAdapter<CharSequence> adapter = ListAdapter.createFromResource(getActivity(),
-        		        R.array.fisicos_array, android.R.layout.simple_spinner_item);
-        		// Specify the layout to use when the list of choices appears
-        		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        		// Apply the adapter to the spinner
+        		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+        		        R.array.fisicos_array, android.R.layout.simple_list_item_1);
+        		//aplicar el adapter
         		list.setAdapter(adapter);
+        	}else if (mItem.content.equals("Grid View")){
+        		rootView = inflater.inflate(R.layout.control_gridview, container, false);
+        		//Crea Grid view y adapter a partir de grid_view_detail y fisicos_array
+        		//He utilizado como textview de cada item simple_list_item_1
+        		GridView grilla = (GridView) rootView.findViewById(R.id.grid_view_detail);
+        		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+        		        R.array.fisicos_array, android.R.layout.simple_list_item_1);
+        		//aplicar el adapter
+        		grilla.setAdapter(adapter);
         	}else{
         		rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
         		((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.content);
