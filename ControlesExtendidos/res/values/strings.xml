@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, ControlesExtendidosActivity!</string>
     <string name="app_name">ControlesExtendidos</string>
+    <string name="sobrepasado_limite">Longitud máxima alcanzada </string>
 
 </resources>
