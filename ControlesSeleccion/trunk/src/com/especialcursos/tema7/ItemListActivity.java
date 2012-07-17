@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.widget.AdapterView.OnItemSelectedListener;
 
-public class ItemListActivity extends FragmentActivity
-        implements ItemListFragment.Callbacks {
+public class ItemListActivity extends FragmentActivity implements ItemListFragment.Callbacks{
 
     private boolean mTwoPane;
 
@@ -23,8 +23,8 @@ public class ItemListActivity extends FragmentActivity
                     .setActivateOnItemClick(true);
         }
     }
+    
 
-    @Override
     public void onItemSelected(String id) {
         if (mTwoPane) {
             Bundle arguments = new Bundle();

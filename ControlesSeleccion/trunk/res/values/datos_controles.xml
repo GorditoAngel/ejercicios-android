@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fisicos_array">
+        <item>Einstein</item>
+        <item>Schrodinger</item>
+        <item>de Broglie</item>
+        <item>Laplace</item>
+        <item>Newton</item>
+        <item>Poncaire</item>
+        <item>Gauss</item>
+        <item>Focault</item>
+        <item>Fourier</item>
+        <item>Feynmann</item>
+        <item>Voltaire</item>
+        <item>Curie</item>
+        <item>Meitner</item>
+        <item>Boltzman</item>
+        <item>Bhor</item>
+        <item>Tesla</item>
+        <item>Faraday</item>
+        <item>Helmotz</item>
+        <item>Velayos</item>
+        <item>Oersted</item>
+    </string-array>
+</resources>
