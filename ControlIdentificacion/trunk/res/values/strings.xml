@@ -1,8 +1,15 @@
 <resources>
 
     <string name="app_name">ControlIdentificacion</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_controles_basicos">ControlesBasicosActivity</string>
+    <string name="ctrl_nombre">Nombre:</string>
+    <string name="ctrl_nombre_hint">Perico</string>
+    <string name="ctrl_apellidos">"Apellidos: "</string>
+    <string name="ctrl_email">"Email: "</string>
+    <string name="ctrl_hint_apellidos">de los Palotes</string>
+    <string name="ctrl_hint_email">perico@gmail.com</string>
+    <string name="ctrl_boton_mostrar">Mostrar</string>
+    <string name="ctrl_boton_borrar">Borrar</string>
 
 </resources>
