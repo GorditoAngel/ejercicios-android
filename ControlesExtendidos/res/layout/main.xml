@@ -7,8 +7,7 @@
     <igserrano.control.controlesextendidos.EditTextContador
         android:id="@+id/controlPersonalizado"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:maxLength ="250" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/textView1"
