@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 
 public class EditTextContador extends EditText {
+	
 
 	public EditTextContador(Context context) {
 		super(context);
