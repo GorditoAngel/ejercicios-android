@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/main_item1" android:icon="@drawable/ic_menu_item1" android:title="@string/menu_item1" android:showAsAction="always">
+        <menu>
+            <group android:id="@+id/group1" android:checkableBehavior="single">
+                <item android:id="@+id/sub1_radio1" android:title="@string/radio1" android:checked="true"/>
+	            <item android:id="@+id/sub1_radio2" android:title="@string/radio2"/>
+	            <item android:id="@+id/sub1_radio3" android:title="@string/radio3"/>
+	            <item android:id="@+id/sub1_radio4" android:title="@string/radio4"/>
+            </group>
+            <item android:id="@+id/sub1_checkbox1" android:title="@string/checkbox1" android:checkable="true"/>
+            <item android:id="@+id/sub1_checkbox2" android:title="@string/checkbox2" android:checkable="true"/>
+        </menu>
+    </item>
+    <item android:id="@+id/main_item2" android:icon="@drawable/ic_menu_item2" android:title="@string/menu_item2" android:showAsAction="always">
+        <menu>
+            <item android:id="@+id/sub2_item1" android:title="@string/sub2_item1" />
+            <item android:id="@+id/sub2_item2" android:title="@string/sub2_item2" />
+            <item android:id="@+id/sub2_item3" android:title="@string/sub2_item3" />
+        </menu>
+    </item>
+    <item android:id="@+id/main_item3" android:icon="@drawable/ic_menu_item3" android:title="@string/menu_item3" android:showAsAction="ifRoom"></item>
+    <item android:id="@+id/main_item4" android:icon="@drawable/ic_menu_item4" android:title="@string/menu_item4" android:showAsAction="ifRoom"></item>
+    <item android:id="@+id/main_item5" android:icon="@drawable/ic_menu_item5" android:title="@string/menu_item5" android:showAsAction="ifRoom"></item>
+    <item android:id="@+id/main_item6" android:icon="@drawable/ic_menu_item6" android:title="@string/menu_item6" android:showAsAction="ifRoom"></item>
+</menu>

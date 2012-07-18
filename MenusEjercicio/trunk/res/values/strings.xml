@@ -1,8 +1,22 @@
 <resources>
 
     <string name="app_name">MenusEjercicio</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Ejercicio con menus</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
-
+    <string name="menu_item1">item1</string>
+    <string name="menu_item2">item2</string>
+    <string name="menu_item3">item3</string>
+    <string name="menu_item4">item4</string>
+    <string name="menu_item5">item5</string>
+    <string name="menu_item6">item6</string>
+    <string name="radio1">"Radiobutton 1 "</string>
+    <string name="radio2">"Radiobutton 2 "</string>
+    <string name="radio3">"Radiobutton 3 "</string>
+    <string name="radio4">"Radiobutton 4 "</string>
+    <string name="checkbox1">"Checkbox 1 "</string>
+	<string name="checkbox2">"Checkbox 2 "</string>
+	<string name="sub2_item1">submenu item1</string>
+	<string name="sub2_item2">submenu item2</string>
+	<string name="sub2_item3">submenu item3</string>
 </resources>
