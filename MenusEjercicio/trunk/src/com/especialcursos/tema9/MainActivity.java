@@ -2,9 +2,9 @@ package com.especialcursos.tema9;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -51,8 +51,7 @@ public class MainActivity extends Activity {
     
     
     public void goToListActivity(MenuItem item){
-    	//TODO enviar a la otra actividad
-    	Toast.makeText(this, "funciona (amndar a listActivity", Toast.LENGTH_LONG).show();
+    	startActivity(new Intent(MainActivity.this,ListaCosas.class));
     }
 
     

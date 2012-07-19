@@ -15,8 +15,65 @@
     <string name="radio3">"Radiobutton 3 "</string>
     <string name="radio4">"Radiobutton 4 "</string>
     <string name="checkbox1">"Checkbox 1 "</string>
-	<string name="checkbox2">"Checkbox 2 "</string>
-	<string name="sub2_item1">submenu item1</string>
-	<string name="sub2_item2">submenu item2</string>
-	<string name="sub2_item3">submenu item3</string>
+    <string name="checkbox2">"Checkbox 2 "</string>
+    <string name="sub2_item1">submenu item1</string>
+    <string name="sub2_item2">submenu item2</string>
+    <string name="sub2_item3">submenu item3</string>
+    <string name="title_activity_lista_cosas">ListaCosas</string>
+    
+    <string-array name="musica_array">
+        <item>Foo Fighters</item>
+		<item>Fun Lovin Criminals</item>
+		<item>Fundamental</item>
+		<item>Garbaje</item>
+		<item>Green Day</item>
+		<item>Heroes del Silencio</item>
+		<item>Hevia</item>
+		<item>Ibiza Chill Out</item>
+		<item>Indi Sound</item>
+		<item>Janis Joplins</item>
+		<item>Jarabe de Palo</item>
+		<item>Jazz Contemporaneo</item>
+		<item>Jazz ECM</item>
+		<item>Jimi Hendrix</item>
+		<item>Kula Shaker</item>
+		<item>Lemonheads</item>
+		<item>Mandragora</item>
+		<item>Manolo García</item>
+		<item>Manu Chao</item>
+		<item>Mark Knofler</item>
+		<item>Mike Oldfield</item>
+		<item>Mississippi</item>
+		<item>Nada Surf</item>
+		<item>Nirvana</item>
+		<item>No Doubt</item>
+		<item>Oasis</item>
+		<item>Ocean Colour Scene</item>
+		<item>Off Spring</item>
+		<item>Pixies</item>
+		<item>Plachi (Disco-Bar)</item>
+		<item>Presidents Of The USA</item>
+		<item>Pulp </item>
+		<item>Radiohead</item>
+		<item>Ramones</item>
+		<item>Reef</item>
+		<item>REM</item>
+		<item>Revolver</item>
+		<item>Rodriguez</item>
+		<item>Safri Duo</item>
+		<item>Santana, Carlos</item>
+		<item>Scorpions</item>
+		<item>Seguridad Social</item>
+		<item>Sidone</item>
+		<item>Siniestro Total</item>
+		<item>Skunk Anansie</item>
+    </string-array>
+		<string name="ctx_item1">Item contextual 1</string>
+		<string name="ctx_item2">Item contextual 2</string>
+		<string name="ctx_item3">Item contextual 3</string>
+		<string name="ctx_item4">Item contextual 4</string>
+		<string name="ctx_chk1">Chekeable 1</string>
+		<string name="ctx_chk2">Chekeable 2</string>
+		<string name="ctx_chk3">Chekeable3</string>	
+
 </resources>
