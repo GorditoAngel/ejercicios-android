@@ -2,6 +2,7 @@ package com.especialcursos.tema9;
 
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -93,7 +94,9 @@ public class ListaCosas extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+//                NavUtils.navigateUpFromSameTask(this);
+            	startActivity(new Intent(ListaCosas.this, MainActivity.class));
+            	onPause();
                 return true;
         }
         return super.onOptionsItemSelected(item);
