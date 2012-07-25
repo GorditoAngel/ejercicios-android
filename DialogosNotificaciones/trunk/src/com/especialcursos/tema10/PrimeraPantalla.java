@@ -2,11 +2,15 @@ package com.especialcursos.tema10;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 public class PrimeraPantalla extends Activity {
@@ -73,7 +77,14 @@ public class PrimeraPantalla extends Activity {
     
     private void mostrarToastPersonalizado(){
     	//TODO Toast personalizado
-    	//con un icono a la derecha y texto a la derecha.
+    	//con un icono a la izquierda y texto a la derecha.
+    	LayoutInflater inflater = getLayoutInflater();
+    	View layout = inflater.inflate(R.layout.toast_personal, (ViewGroup) findViewById(R.id.toast_personal_layout));
+    	Toast toast = new Toast(getApplicationContext());
+    	toast.setGravity(Gravity.CENTER, 0, 0);
+    	toast.setDuration(Toast.LENGTH_LONG);
+    	toast.setView(layout);
+    	toast.show();
     }
     
     private void mostrarCuadroDialogoPersonalizado(){
