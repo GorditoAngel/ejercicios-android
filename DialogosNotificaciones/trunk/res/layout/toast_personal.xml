@@ -11,13 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_stat_name" />
-
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:gravity="center"
-        android:text="@string/toast_personal_texto" />
+        android:text="@string/toast_personal_texto"
+        android:textStyle="italic"
+        android:typeface="serif" />
 
 </LinearLayout>

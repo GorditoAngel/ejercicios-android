@@ -76,12 +76,11 @@ public class PrimeraPantalla extends Activity {
     }
     
     private void mostrarToastPersonalizado(){
-    	//TODO Toast personalizado
     	//con un icono a la izquierda y texto a la derecha.
     	LayoutInflater inflater = getLayoutInflater();
     	View layout = inflater.inflate(R.layout.toast_personal, (ViewGroup) findViewById(R.id.toast_personal_layout));
     	Toast toast = new Toast(getApplicationContext());
-    	toast.setGravity(Gravity.CENTER, 0, 0);
+    	toast.setGravity(Gravity.CENTER, 0, -250);
     	toast.setDuration(Toast.LENGTH_LONG);
     	toast.setView(layout);
     	toast.show();
