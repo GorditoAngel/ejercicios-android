@@ -16,5 +16,8 @@
     <string name="segunda_pantalla_button_5">Actualización</string>
     <string name="segunda_pantalla_button_4">Notificación Personalizada</string>
     <string name="toast_personal_texto">Toast personalizado a gusto  del desarrollador</string>
+    <string name="dialogo_personal_texto">Mensaje dialogo personal</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
 
 </resources>

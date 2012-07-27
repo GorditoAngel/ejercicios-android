@@ -2,6 +2,9 @@ package com.especialcursos.tema10;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +23,8 @@ public class PrimeraPantalla extends Activity {
 	Button boton3 = null;
 	Button boton4 = null;
 	Button boton5 = null;
+	
+	static final int DIALOGO_PERSONAL = 1; 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,12 @@ public class PrimeraPantalla extends Activity {
         boton3.setOnClickListener(new BotonListener());
         boton4.setOnClickListener(new BotonListener());
         boton5.setOnClickListener(new BotonListener());
+    }
+    
+    @Override
+    protected Dialog onCreateDialog(int id) {
+    	// TODO Auto-generated method stub
+    	return super.onCreateDialog(id);
     }
 
     @Override
@@ -78,7 +89,8 @@ public class PrimeraPantalla extends Activity {
     private void mostrarToastPersonalizado(){
     	//con un icono a la izquierda y texto a la derecha.
     	LayoutInflater inflater = getLayoutInflater();
-    	View layout = inflater.inflate(R.layout.toast_personal, (ViewGroup) findViewById(R.id.toast_personal_layout));
+    	View layout = inflater.inflate(R.layout.toast_personal, 
+    			(ViewGroup) findViewById(R.id.toast_personal_layout));
     	Toast toast = new Toast(getApplicationContext());
     	toast.setGravity(Gravity.CENTER, 0, -250);
     	toast.setDuration(Toast.LENGTH_LONG);
@@ -92,7 +104,29 @@ public class PrimeraPantalla extends Activity {
     	//“Aceptar”, se saldrá de la aplicación, no sin antes mostrar otro toast personalizado con otro
     	//icono y otro mensaje de despedida. Si se pulsa el botón “Cancelar”, el diálogo se cerrará sin
     	//salir de la aplicación.
+    	View layoutDialogo = getLayoutInflater().inflate(R.layout.dialogo_personal, 
+    			(ViewGroup) findViewById(R.id.dialogo_personal_raiz));
+    	AlertDialog dialogoPersonalizado;
+    	AlertDialog.Builder constructor;
+    	constructor = new AlertDialog.Builder(this);
+    	constructor.setView(layoutDialogo);
     	
+    	//Añadimos el boton aceptar
+    	constructor.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				// este listener cierra la aplicacion muestra un Toast
+				cierraYToast();
+			}
+		});
+    	//Añadimos en boton cancelar
+    	constructor.setNegativeButton(R.string.cancelar,  new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				//cierra el dialogo
+				dialog.dismiss();
+			}
+		});
+    	
+    	dialogoPersonalizado = constructor.create();
     }
     
     private void vibrar(){
@@ -102,6 +136,10 @@ public class PrimeraPantalla extends Activity {
     
     private void navegarSegundaPantalla(){
     	//TODO
+    }
+    
+    private void cierraYToast(){
+    	onStop();
     }
     
 }

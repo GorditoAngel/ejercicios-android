@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialogo_personal_raiz"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:drawableLeft="@drawable/ic_dialogo_personal"
+    android:gravity="center_vertical"
+    android:text="@string/dialogo_personal_texto"
+    android:textAppearance="?android:attr/textAppearanceLarge" >
+
+</TextView>
