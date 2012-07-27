@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hola, DialogosYNotificaciones</string>
+    <string name="app_name">Dialogos Y Notificaciones</string>
+    <string name="prueba_alert">Probando AlertDialog</string>
+    <string name="confirmar_cierre">¿Estás seguro?</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="cerrar_aplicacion">Cerrar aplicación</string>
+    <string name="prueba_lista">Probando diálogo lista</string>    
+    <string name="seleccionar_estilo">Selecciona un estilo</string>
+    <string name="elige_estilo">Elige un estilo musical</string>
+    <string name="prueba_lista_rb">Probando diálogo lista RB</string>
+    <string name="seleccionar_estilo_rb">Selecciona un estilo RB</string>
+    <string name="elige_estilo_rb">Elige un estilo musical RB</string>
+    <string name="mostrar_progreso_indeterminado">Mostrar progreso indeterminado</string>
+    <string name="prueba_progress_indeterminado">Progreso indeterminado</string>
+    <string name="mostrar_barra_progreso">Mostrar barra de progreso</string>
+    <string name="prueba_progress_bar">Barra de Progreso</string>
+    <string name="ahora_suena">Ahora suena… </string>
+    <string name="escuchar">Escuchar</string>
+    <string name="prueba_dialogo_personalizado">Diálogo personalizado</string>
+    <string name="prueba_dialogo_personalizado2">Diálogo personalizado 2</string>
+    <string name="parar">Parar</string>    
+    <string name="seleccionar_fecha_hora">Pulsa para elegir fecha y hora</string>
+    <string name="elegir_fecha">Elige fecha</string>
+    <string name="elegir_hora">Elige hora</string>
+        
+    <string-array name="estilos_musica_array">
+		<item>Chillout</item>
+		<item>Clásica</item>
+		<item>Hip Hop</item>
+		<item>House</item>		
+		<item>Indie</item>
+		<item>Jazz</item>
+		<item>Pop</item>
+		<item>Rock</item>
+		<item>World</item>		
+    </string-array>        
+    
+</resources>
