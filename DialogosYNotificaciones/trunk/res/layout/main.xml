@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/LinearLayout01"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+ 
+		<LinearLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:isScrollContainer="true" >
+		
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:layout_margin="10dp"
+		        android:text="@string/prueba_alert"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		
+		    <Button
+		        android:id="@+id/btnCerrar"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:layout_margin="10dp"
+		        android:text="@string/cerrar_aplicacion" />
+		
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/prueba_lista"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		
+		    <Button
+		        android:id="@+id/btnEstilo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/seleccionar_estilo" />
+		    
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/prueba_lista_rb"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		
+		    <Button
+		        android:id="@+id/btnEstiloRB"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/seleccionar_estilo_rb" />
+		    
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/prueba_progress_indeterminado"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		
+		    <Button
+		        android:id="@+id/btnProgresoIndeterminado"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/mostrar_progreso_indeterminado" />
+		    
+		     <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/prueba_progress_bar"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		
+		    <Button
+		        android:id="@+id/btnBarraProgreso"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/mostrar_barra_progreso" />
+		    
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/prueba_dialogo_personalizado"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		
+		    <Button
+		        android:id="@+id/btnEscuchar"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/escuchar"/>
+		    
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/prueba_dialogo_personalizado2"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		
+		    <Button
+		        android:id="@+id/btnEscuchar2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/escuchar"/>
+		    
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_margin="10dp"
+		        android:text="@string/seleccionar_fecha_hora"
+		        android:textColor="#a4ca39"
+		        android:textSize="20dp"
+		        android:textStyle="bold" />
+		    
+		    <LinearLayout android:orientation="horizontal"
+		        android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:layout_gravity="center_horizontal">
+		        
+		        <LinearLayout android:orientation="vertical"
+		            android:layout_width="wrap_content"
+					android:layout_height="fill_parent">	            
+				
+				    <TextView
+				        android:id="@+id/fechaSeleccionada"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="center_horizontal"
+				        android:layout_margin="10dp"
+				        android:text=""
+				        android:textColor="#ffffff"
+				        android:textSize="14dp"
+				        android:textStyle="" />
+				    
+				    <Button
+				        android:id="@+id/btnFecha"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="center_horizontal"
+				        android:layout_margin="10dp"
+				        android:text="@string/elegir_fecha"/>
+		        </LinearLayout>
+		        
+		        <LinearLayout android:orientation="vertical"
+		            android:layout_width="wrap_content"
+					android:layout_height="fill_parent">
+		           				
+				    <TextView
+				        android:id="@+id/horaSeleccionada"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="center_horizontal"
+				        android:layout_margin="10dp"
+				        android:text=""
+				        android:textColor="#ffffff"
+				        android:textSize="14dp"
+				        android:textStyle="" />
+				    
+				    <Button
+				        android:id="@+id/btnHora"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="center_horizontal"
+				        android:layout_margin="10dp"
+				        android:text="@string/elegir_hora"/>
+		        </LinearLayout>
+		    </LinearLayout>		    
+		
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>
