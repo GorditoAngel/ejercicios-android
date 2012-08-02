@@ -18,13 +18,13 @@ import android.support.v4.app.NavUtils;
 
 public class PrimeraPantalla extends Activity {
 	
+	static final int DIALOGO_PERSONALIZADO_CONFIRMACION_SALIR = 1;
+	
 	Button boton1 = null;
 	Button boton2 = null;
 	Button boton3 = null;
 	Button boton4 = null;
 	Button boton5 = null;
-	
-	static final int DIALOGO_PERSONAL = 1; 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,10 +47,21 @@ public class PrimeraPantalla extends Activity {
     @Override
     protected Dialog onCreateDialog(int id) {
     	// TODO Auto-generated method stub
-    	return super.onCreateDialog(id);
+    	Dialog dialogo;
+    	switch (id){
+    	case DIALOGO_PERSONALIZADO_CONFIRMACION_SALIR:
+    		dialogo = crearDialogoConfirmacionSalir();
+    		break;
+    	default:
+    		dialogo = null;
+    		break;
+    	}
+    	return dialogo;
     }
 
-    @Override
+    
+
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_primera_pantalla, menu);
         return true;
@@ -67,7 +78,7 @@ public class PrimeraPantalla extends Activity {
 				break;
 			case R.id.button2:
 				//Cuadro de dialogo personalizado
-				mostrarCuadroDialogoPersonalizado();
+				showDialog(DIALOGO_PERSONALIZADO_CONFIRMACION_SALIR);
 				break;
 			case R.id.button3:
 			case R.id.button4:
@@ -76,7 +87,7 @@ public class PrimeraPantalla extends Activity {
 				//Patron de vibracion medio segundo vibrando
 				//medio segundo sin vibrar y medio segundo vibrando
 				//Se navegará ala segunda pantalla de aplicación
-				vibrar();
+				vibrarYnotificacion();
 				navegarSegundaPantalla();
 				break;
 			default:
@@ -98,8 +109,8 @@ public class PrimeraPantalla extends Activity {
     	toast.show();
     }
     
-    private void mostrarCuadroDialogoPersonalizado(){
-    	//TODO cuadro de diálogo personalizado, con dos
+    private Dialog crearDialogoConfirmacionSalir(){
+    	//cuadro de diálogo personalizado, con dos
     	//botones, un icono y un mensaje que pida confirmación para salir de la aplicación. Si se pulsa
     	//“Aceptar”, se saldrá de la aplicación, no sin antes mostrar otro toast personalizado con otro
     	//icono y otro mensaje de despedida. Si se pulsa el botón “Cancelar”, el diálogo se cerrará sin
@@ -127,9 +138,11 @@ public class PrimeraPantalla extends Activity {
 		});
     	
     	dialogoPersonalizado = constructor.create();
+    	
+    	return dialogoPersonalizado;
     }
     
-    private void vibrar(){
+    private void vibrarYnotificacion(){
     	//TODO Las tres notificaciones generarán un patrón de vibración (medio segundo vibrando, medio
     	//segundo sin vibrar, medio segundo vibrando)
     }
@@ -139,7 +152,17 @@ public class PrimeraPantalla extends Activity {
     }
     
     private void cierraYToast(){
-    	onStop();
+    	//Mostrar toast personalizado con icono y cierra la aplicacion
+    	LayoutInflater inflater = getLayoutInflater();
+    	View layout = inflater.inflate(R.layout.toast_personal_cerrar_aplicacion, 
+    			(ViewGroup) findViewById(R.id.toast_personal_layout));
+    	Toast toast = new Toast(getApplicationContext());
+    	toast.setGravity(Gravity.CENTER, 0, 0);
+    	toast.setDuration(Toast.LENGTH_SHORT);
+    	toast.setView(layout);
+    	toast.show();
+    	
+    	this.finish();
     }
     
 }
