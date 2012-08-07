@@ -36,7 +36,7 @@ public class ItemListActivity extends FragmentActivity
     }
 
     
-    public void onItemSelected(String id) {
+    public void onItemSelected(String id, String name) {
         if (mTwoPane) {
             Bundle arguments = new Bundle();
             arguments.putString(ItemDetailFragment.ARG_ITEM_ID, id);
