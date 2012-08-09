@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Fragmentos</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_pantalla_principal">Fragmentos</string>
+    <string name="detail_text_edit_hint">Item</string>
+    <string name="interfaz_no_implementada">La %1$s debe implementar OnElementoSelectedListener</string>
+
+</resources>
