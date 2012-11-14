@@ -1,8 +1,12 @@
 package com.especialcursos.tema11.serviciospractica;
 
 import android.os.Bundle;
+import android.os.IBinder;
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,18 +18,22 @@ public class PrincipalActivity extends Activity {
 
 	private EditText mTexto;
 	private Button mBoton;
-	private String[] _lista;
-	private int _posicion;
+	private int tam_lista;
+	private int posicion;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        
         mTexto = (EditText) findViewById(R.id.editText1);
         mBoton = (Button) findViewById(R.id.button1);
-        _lista = getResources().getStringArray(R.array.array_planetas);
-        _posicion = 0;
+        
+        tam_lista = getResources()
+        		.getStringArray(R.array.array_planetas)
+        		.length;
+        posicion = 0;
         
         mBoton.setOnClickListener(new Button.OnClickListener() {	
 			public void onClick(View v) {
@@ -38,31 +46,27 @@ public class PrincipalActivity extends Activity {
     private void botonPresionado(){
     	boolean textoVacio = mTexto.getText().length() <= 0;
     	if (textoVacio){
-    		mostrarTexto(_lista[_posicion]);
-    		//le digo que avance una posicion para la siguiente vez
-    		if (_posicion < (_lista.length - 1))
-    			_posicion++;
+    		lanzarServicio();
+    		if (posicion < (tam_lista - 1))
+    			posicion++;
     		else
-    			_posicion = 0;
+    			posicion = 0;
     	}else{
-    		mostrarTexto(mTexto.getText().toString());
-    		//borrar texto
+    		lanzarServicio(mTexto.getText().toString());
     		mTexto.getText().clear();
     	}
     		
     }
     
-    private void mostrarTexto(String str){
-    	
-    }
-    
     private void lanzarServicio(){
     	Intent intent = new Intent(this, ServicioPersonalizado.class);
+    	intent.putExtra("POSICION", posicion);
     	startService(intent);
     }
     
     private void lanzarServicio(String str){
     	Intent intent = new Intent(this, ServicioPersonalizado.class);
+    	intent.putExtra("POSICION", posicion);
     	intent.putExtra("TEXTO", str);
     	startService(intent);
     }
@@ -82,6 +86,13 @@ public class PrincipalActivity extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    protected void onStop() {
+    	Intent intent = new Intent(this, ServicioPersonalizado.class);
+    	stopService(intent);
+    	super.onStop();
     }
 
 }

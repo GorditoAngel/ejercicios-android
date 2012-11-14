@@ -17,5 +17,9 @@
         <item>Urano</item>
         <item>Plutón</item>
     </string-array>
-
+	<string name="notificacion">Notificacion</string>
+	<string name="notificacion_content_title">Notificacion</string>
+	<string name="notificacion_content_text">Notificacion</string>
+	<string name="servicio_iniciando">El servicio se ha iniciado</string>
+	<string name="servicio_destruyendose">Ael servicio se ha destruido</string>
 </resources>
