@@ -16,7 +16,6 @@ public class ServicioPersonalizado extends IntentService {
 	Notification mNotification;
 	int mNotificationID;
 	private String[] _lista;
-	private int _posicion;
 	
     public ServicioPersonalizado() {
 		super("ServicioPersonalizado");
@@ -25,7 +24,6 @@ public class ServicioPersonalizado extends IntentService {
     @Override
     public void onCreate() {
     	_lista = getResources().getStringArray(R.array.array_planetas);
-    	_posicion = 0;
     	mNotificationManager  = 
     			(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
     	super.onCreate();
@@ -74,10 +72,11 @@ public class ServicioPersonalizado extends IntentService {
 		
 		CharSequence contentTitle = str;
     	CharSequence contentText = str;
-    	Intent notificationIntent = new Intent(getApplicationContext(), PrincipalActivity.class);
+    	Intent notificationIntent = new Intent(this, PrincipalActivity.class);
     	PendingIntent contentIntent = 
-    			PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);
-  
+    			PendingIntent.getActivity(this, 0, 
+    					notificationIntent, Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+    	//El flag vale para que no abra otra actividad si ya hay una.
     	constructor.setContentText(contentText);
     	constructor.setContentTitle(contentTitle);
     	constructor.setContentIntent(contentIntent);
@@ -104,7 +103,7 @@ public class ServicioPersonalizado extends IntentService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//mNotificationManager.cancel(notificationID);
+		mNotificationManager.cancel(notificationID);
 
 	}
 	

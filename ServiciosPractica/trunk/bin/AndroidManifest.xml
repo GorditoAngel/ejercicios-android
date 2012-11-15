@@ -13,13 +13,12 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".PrincipalActivity"
-            android:label="@string/title_activity_principal" >
+            android:label="@string/title_activity_principal" android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.Activity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
