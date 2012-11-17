@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">ServiciosEnlazados</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
+    <string name="texto_titulo">Área y volumen de una lata de fabada</string>
+    <string name="tv_altura">Altura(cm)</string>
+    <string name="tv_radio_base">Radio de base (cm)</string>
+    <string name="tv_Area">Área (cm2)</string>
+    <string name="tv_volumen">Volumen (l)</string>
+    <string name="bt_calcular">Calcular</string>
+    <string name="string_on_bind">Cliente añadido al servicio</string>
+    <string name="string_on_unbind">Todos los clientes desconectados</string>
+    <string name="notificacion_calculando_area">Área calculada</string>
+    <string name="notificacion_calculando_volumen">Volumen calculado</string>
+    <string name="calculo_hecho">Calculo Realizado</string>
+    <string name="string_servicio_destruido">El servicio ha sido destruido</string>
+
+</resources>
