@@ -2,8 +2,10 @@ package com.especialcursos.tema12.procesos;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -25,6 +27,8 @@ public class MainActivity extends Activity {
         etNumero = (EditText) findViewById(R.id.et_numero_factoriales);
         etResultado = (EditText) findViewById(R.id.et_resultado);
 
+        etResultado.setKeyListener(null);
+        
     }
 
     @Override
@@ -35,6 +39,13 @@ public class MainActivity extends Activity {
     
     
     public void calcularFactoriales(View v){
+    	//ñapa para quitar la mierda del keyboard
+    	if (etNumero.isFocused()) etResultado.requestFocus(); 	
+    	InputMethodManager imm = 
+    			(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    	imm.hideSoftInputFromWindow(etResultado.getWindowToken(), 0);
+    	
+    	//nos aseguramos de los valores d eentrada antes de ejecutar
     	if (etNumero.getText().toString().length() > 0){
     		if (etResultado.getText().toString().length() > 0)
     			etResultado.getText().clear();
