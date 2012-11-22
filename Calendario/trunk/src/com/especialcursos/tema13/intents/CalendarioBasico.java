@@ -19,6 +19,5 @@ public class CalendarioBasico extends Activity {
         getMenuInflater().inflate(R.menu.activity_calendario_basico, menu);
         return true;
     }
-
     
 }
