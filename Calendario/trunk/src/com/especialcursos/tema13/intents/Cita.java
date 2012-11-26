@@ -1,15 +1,16 @@
 package com.especialcursos.tema13.intents;
 
 import java.sql.Date;
+import java.util.GregorianCalendar;
 
 public class Cita {
 	private int _id;
 	private String _descripcion;
 	private String _lugar;
-	private Date _fecha;
+	private GregorianCalendar _fecha;
 	private int _avisar;
 	
-	public Cita(int id, String _descripcion, String _lugar, Date _fecha, int _avisar) {
+	public Cita(int id, String _descripcion, String _lugar, GregorianCalendar _fecha, int _avisar) {
 		super();
 		this._id = id;
 		this._descripcion = _descripcion;
@@ -42,11 +43,11 @@ public class Cita {
 		this._lugar = _lugar;
 	}
 
-	public Date get_fecha() {
+	public GregorianCalendar get_fecha() {
 		return _fecha;
 	}
 
-	public void set_fecha(Date _fecha) {
+	public void set_fecha(GregorianCalendar _fecha) {
 		this._fecha = _fecha;
 	}
 

@@ -1,15 +1,20 @@
 package com.especialcursos.tema13.intents;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.sql.Date;
+import java.util.GregorianCalendar;
 
+
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class BDCalendario extends SQLiteOpenHelper{
+	
+	private static final String TAG = BDCalendario.class.getSimpleName();
 	
 	static final String NOMBRE_DB = "calendario_db";
 	static final String TB_CALENDARIO = "Calendario";
@@ -40,6 +45,7 @@ public class BDCalendario extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		// Creación de la base de datos y tabla
 		db.execSQL(crear_tabla);
+		agregarDatosIniciales(db);
 	}
 
 	@Override
@@ -53,32 +59,37 @@ public class BDCalendario extends SQLiteOpenHelper{
 	
 	private void agregarDatosIniciales(SQLiteDatabase db){
 		ArrayList<Cita> citas = new ArrayList<Cita>();
+		
 		citas.add(new Cita(0, "tomar un cafe", "Startbucks de Atocha",
-				 new Date(), 10));
-	}
-	
-	private void agregarCitas(ArrayList<Cita> citas){
+				 new GregorianCalendar(2012,11,9,14,30) , 10));
+		citas.add(new Cita(0, "ir al ginmansio", "Odisey Gim",
+				 new GregorianCalendar(2012,11,30,19,00) , 0));
+		citas.add(new Cita(0, "Clase de estado sólido", "Facultad de Físicas",
+				 new GregorianCalendar(2012,12,3,19,30) , 60));
+		citas.add(new Cita(0, "Cita con mi fisioterapeuta", "Getafe",
+				 new GregorianCalendar(2012,12,10,20,00) , 10));
 		
+		agregarCitas(citas, db);
 	}
 	
-	public void agregarCita(Cita cita){
-		
-	}
-	
-	public void borrarCita(Cita cita){
-		
-	}
-	
-	public void borrarCita(int id){
-		
-	}
-	
-	public Cita getCita(int id){
-		return null;
-	}
-	
-	public ArrayList<Cita> getCitas(){
-		return null;
-	}
-	
+	private void agregarCitas(ArrayList<Cita> citas, SQLiteDatabase db){
+		for (Cita cita : citas) {
+			try {
+				ContentValues cont = new ContentValues();
+				cont.put(CITA_DESCRIPCION, cita.get_descripcion());
+				cont.put(CITA_LUGAR, cita.get_lugar());
+				cont.put(CITA_AVISAR, cita.get_avisar());
+				cont.put(CITA_FECHA, cita.get_fecha().getTimeInMillis());
+				long rowId = db.insertOrThrow(TB_CALENDARIO, null, cont);
+				if (rowId == -1)
+					throw new Exception("problem when write in database");
+			} catch (SQLException e) {
+				Log.e(TAG, "problem when write in database");
+				e.printStackTrace();
+			} catch (Exception e) {
+				Log.e(TAG, "problem when write in database");
+				e.printStackTrace();
+			}
+		}
+	}	
 }
