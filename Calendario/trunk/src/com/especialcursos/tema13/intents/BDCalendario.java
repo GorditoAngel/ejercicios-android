@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -91,5 +92,26 @@ public class BDCalendario extends SQLiteOpenHelper{
 				e.printStackTrace();
 			}
 		}
-	}	
+	}
+	
+	public void insert(String descripcion, String lugar, long fecha, int avisar){
+		ContentValues cv = new ContentValues();
+		
+		cv.put(CITA_DESCRIPCION, descripcion);
+		cv.put(CITA_LUGAR, lugar);
+		cv.put(CITA_FECHA, fecha);
+		cv.put(CITA_AVISAR, avisar);
+		
+		getWritableDatabase().insert(TB_CALENDARIO, null, cv);
+	}
+	
+	public Cursor getAll(){
+		return getReadableDatabase().rawQuery("SELECT " + CITA_ID + ", " +
+				CITA_DESCRIPCION + ", " +
+				CITA_LUGAR + ", " +
+				CITA_FECHA + ", " +
+				CITA_AVISAR + ", FROM " + TB_CALENDARIO +
+				" ORDER BY " + CITA_FECHA,
+				null);
+	}
 }
