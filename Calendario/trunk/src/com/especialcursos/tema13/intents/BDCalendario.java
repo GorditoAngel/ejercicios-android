@@ -1,11 +1,13 @@
 package com.especialcursos.tema13.intents;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,9 +33,12 @@ public class BDCalendario extends SQLiteOpenHelper{
 			+ CITA_LUGAR + " TEXT, "
 			+ CITA_FECHA + " TIMESTAMP NOT NULL DEFAULT current_timestamp, "
 			+ CITA_AVISAR + " INTEGER)";
+
+	private Context contexto;
 	
 	public BDCalendario(Context context){
 		super (context, NOMBRE_DB, null, 1);
+		contexto = context;
 	}
 	
 	public BDCalendario(Context context, String name, CursorFactory factory,
@@ -134,9 +139,21 @@ public class BDCalendario extends SQLiteOpenHelper{
 		return c.getLong(3);
 	}
 	
+	public String getFechaStr(Cursor c){
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTimeInMillis(c.getLong(3));
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMMMM/yyyy hh:mm:ss");
+		return sdf.format(calendar.getTime());
+	}
+	
 	public int getAvisar(Cursor c){
 		return c.getInt(4);
 	}
 	
-	
+	public String getAvisarStr(Cursor c){
+		Resources res = contexto.getResources();
+		String frase = res.getString(R.string.tv_row_avisar);
+		String avisar = String.format(frase,c.getInt(4));
+		return avisar;
+	}
 }
