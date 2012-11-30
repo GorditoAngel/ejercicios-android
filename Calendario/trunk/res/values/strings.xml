@@ -12,5 +12,6 @@
     <string name="bt_mes">Mes</string>
     <string name="bt_semana">Semana</string>
     <string name="bt_agregar">Agregar nueva cita</string>
+    <string name="title_activity_lista_citas">ListaCitas</string>
 
 </resources>
