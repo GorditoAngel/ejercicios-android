@@ -20,6 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ListaCitas"
+            android:label="@string/title_activity_lista_citas" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.app.ListActivity" />
+            <intent-filter>
+                <action android:name="com.especialcursos.tema13.intents.VER_CITAS_HOY"/>
+                <action android:name="com.especialcursos.tema13.intents.VER_CITAS_SEMANA"/>
+                <action android:name="com.especialcursos.tema13.intents.VER_CITAS_MES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

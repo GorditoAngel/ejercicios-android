@@ -94,6 +94,9 @@ public class BDCalendario extends SQLiteOpenHelper{
 		}
 	}
 	
+	//Unos elegantes accesos de lectura y escritura en la BD mediante cursores
+	//Cogido de un gran libro: Android Programing Tutorials, 3rd ed
+	
 	public void insert(String descripcion, String lugar, long fecha, int avisar){
 		ContentValues cv = new ContentValues();
 		
@@ -114,4 +117,26 @@ public class BDCalendario extends SQLiteOpenHelper{
 				" ORDER BY " + CITA_FECHA,
 				null);
 	}
+	
+	public int getId(Cursor c){
+		return c.getInt(0);
+	}
+	
+	public String getDescripcion(Cursor c){
+		return c.getString(1);
+	}
+	
+	public String getLugar(Cursor c){
+		return c.getString(2);
+	}
+	
+	public long getFecha(Cursor c){
+		return c.getLong(3);
+	}
+	
+	public int getAvisar(Cursor c){
+		return c.getInt(4);
+	}
+	
+	
 }
