@@ -43,6 +43,7 @@ public class CalendarioBasico extends Activity {
      * @param v
      */
     public void agregarCita(View v){
+    	
     }
     
     /**
@@ -50,6 +51,7 @@ public class CalendarioBasico extends Activity {
      * @param v
      */
     public void botonFecha(View v){
+    	
     }
     
     /**
