@@ -29,11 +29,12 @@
 
             <requestFocus />
         </EditText>
-
+
         <Button
             android:id="@+id/bt_fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="botonFecha"
             android:text="@string/bt_fecha"
             android:textStyle="bold" />
 
@@ -71,12 +72,13 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number" />
-
+
         <Button
             android:id="@+id/bt_agregar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:onClick="agregarCita"
             android:text="@string/bt_agregar" />
 
     </LinearLayout>
@@ -85,26 +87,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" >
-
+
         <Button
             android:id="@+id/bt_dia"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="botonDia"
             android:text="@string/bt_dia" />
-
+
         <Button
             android:id="@+id/bt_semana"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="botonSemana"
             android:text="@string/bt_semana" />
-
+
         <Button
             android:id="@+id/bt_mes"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="botonMes"
             android:text="@string/bt_mes" />
 
     </LinearLayout>
