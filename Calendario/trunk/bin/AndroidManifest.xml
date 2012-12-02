@@ -4,8 +4,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="14" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".CalendarioBasico"
-            android:label="@string/title_activity_calendario_basico" >
+            android:label="@string/title_activity_calendario_basico"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +23,8 @@
         </activity>
         <activity
             android:name=".ListaCitas"
-            android:label="@string/title_activity_lista_citas" >
+            android:label="@string/title_activity_lista_citas"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.ListActivity" />
