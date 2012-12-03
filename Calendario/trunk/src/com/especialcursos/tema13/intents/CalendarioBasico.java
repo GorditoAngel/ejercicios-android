@@ -75,9 +75,14 @@ public class CalendarioBasico extends Activity {
 	    			etLugar.getText().toString(), 
 	    			fecha.getTimeInMillis(), 
 	    			Integer.parseInt(etAvisar.getText().toString()));
+	    	
+	    	etDescripcion.getText().clear();
+	        etLugar.getText().clear();
+	        etAvisar.getText().clear();
     	}else{
     		Toast.makeText(this, R.string.toast_faltan_campos, Toast.LENGTH_SHORT).show();
     	}
+    	
     }
     
     private boolean todosCamposListos(){

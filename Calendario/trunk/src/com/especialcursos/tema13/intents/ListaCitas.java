@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 
 public class ListaCitas extends ListActivity {
@@ -36,7 +37,7 @@ public class ListaCitas extends ListActivity {
         
         datos = helper.getAll();
         startManagingCursor(datos);
-        adapter = new CitaAdapter(getApplicationContext(), datos);
+        adapter = new CitaAdapter(this, datos);
         setListAdapter(adapter);
         
         String action_caller = getIntent().getAction();
@@ -79,16 +80,23 @@ public class ListaCitas extends ListActivity {
 
     	@Override
     	public void bindView(View row, Context ctx , Cursor cursor) {
-    		CitaHolder holder=(CitaHolder) row.getTag();
-    		holder.populateFrom(cursor, helper);
+    		TextView descripcion = (TextView) row.findViewById(R.id.tv_row_descripcion);
+    		TextView lugar = (TextView) row.findViewById(R.id.tv_row_lugar);
+    		TextView fecha = (TextView) row.findViewById(R.id.tv_row_fecha);
+    		TextView avisar = (TextView) row.findViewById(R.id.tv_row_avisar);
+    		
+    		descripcion.setText(helper.getDescripcion(cursor));
+    		lugar.setText(helper.getLugar(cursor));
+    		fecha.setText(helper.getFechaStr(cursor));
+    		avisar.setText(helper.getAvisarStr(cursor));
+
     	}
 
     	@Override
     	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-    		LayoutInflater inflater=getLayoutInflater();
+    		LayoutInflater inflater = LayoutInflater.from(context);
     		View row = inflater.inflate(R.layout.fila_cita, parent, false);
-    		CitaHolder holder=new CitaHolder(row);
-    		row.setTag(holder);
+    		bindView(row, context, cursor);
     		return(row);
     	}
 
