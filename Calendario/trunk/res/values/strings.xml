@@ -17,5 +17,5 @@
     <string name="tv_row_avisar">Recordar %1$s\' antes</string>
     <string name="picker_date_title">Día de la cita</string>
     <string name="picker_hour_title">Hora de la cita</string>
-	<string name="toast_faltan_campos">No están rellenados todos lo campos</string>
+	<string name="toast_faltan_campos">No están rellenados todos lo campos </string>
 </resources>

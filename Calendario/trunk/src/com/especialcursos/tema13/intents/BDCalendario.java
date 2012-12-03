@@ -31,7 +31,7 @@ public class BDCalendario extends SQLiteOpenHelper{
 			+ " (" + CITA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
 			+ CITA_DESCRIPCION + " TEXT, "
 			+ CITA_LUGAR + " TEXT, "
-			+ CITA_FECHA + " TIMESTAMP NOT NULL DEFAULT current_timestamp, "
+			+ CITA_FECHA + " INTEGER, "
 			+ CITA_AVISAR + " INTEGER)";
 
 	private Context contexto;
@@ -114,13 +114,17 @@ public class BDCalendario extends SQLiteOpenHelper{
 	}
 	
 	public Cursor getAll(){
-		return getReadableDatabase().rawQuery("SELECT " + CITA_ID + ", " +
-				CITA_DESCRIPCION + ", " +
-				CITA_LUGAR + ", " +
-				CITA_FECHA + ", " +
-				CITA_AVISAR + ", FROM " + TB_CALENDARIO +
-				" ORDER BY " + CITA_FECHA,
-				null);
+		return getReadableDatabase().query(TB_CALENDARIO,
+				new String[] {CITA_ID, CITA_DESCRIPCION, CITA_LUGAR, CITA_FECHA, CITA_AVISAR},
+				null, null, null, null, CITA_FECHA);
+		
+//		return getReadableDatabase().rawQuery("SELECT " + CITA_ID + ", " +
+//				CITA_DESCRIPCION + ", " +
+//				CITA_LUGAR + ", " +
+//				CITA_FECHA + ", " +
+//				CITA_AVISAR + ", FROM " + TB_CALENDARIO +
+//				" ORDER BY " + CITA_FECHA,
+//				null);
 	}
 	
 	public int getId(Cursor c){
