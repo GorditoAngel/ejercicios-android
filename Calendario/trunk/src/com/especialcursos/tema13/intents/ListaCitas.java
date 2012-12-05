@@ -1,5 +1,8 @@
 package com.especialcursos.tema13.intents;
 
+import java.util.ArrayList;
+
+
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,7 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
+import android.widget.Filter;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 
@@ -24,8 +29,7 @@ public class ListaCitas extends ListActivity {
 	public static int VER_CITAS = 3;
 	
 	private int accion;
-	Cursor datos;
-	CitaAdapter adapter; 
+	CitaAdapter adapter;
 	
 	private BDCalendario helper;
 
@@ -35,22 +39,32 @@ public class ListaCitas extends ListActivity {
         
         helper = new BDCalendario(this);
         
-        datos = helper.getAll();
-        startManagingCursor(datos);
-        adapter = new CitaAdapter(this, datos);
-        setListAdapter(adapter);
-        
         String action_caller = getIntent().getAction();
         if (action_caller.equals("com.especialcursos.tema13.intents.VER_CITAS_HOY") ){
         	accion = VER_CITAS_HOY;
+        	ArrayList<Cita> citas =  helper.getHoy();
+        	if (citas != null)
+        		adapter = new CitaAdapter(this, citas);
+        	else adapter = null;
         }else if(action_caller.equals("com.especialcursos.tema13.intents.VER_CITAS_SEMANA")){
         	accion = VER_CITAS_SEMANA;
+        	ArrayList<Cita> citas =  helper.getSemana();
+        	if (citas != null)
+        		adapter = new CitaAdapter(this, citas);
+        	else adapter = null;
         }else if(action_caller.equals("com.especialcursos.tema13.intents.VER_CITAS_MES")){
         	accion = VER_CITAS_MES;
+        	ArrayList<Cita> citas =  helper.getMes();
+        	if (citas != null)
+        		adapter = new CitaAdapter(this, citas);
+        	else adapter = null;
         }else{
         	//como defecto vemos todas
         	accion = VER_CITAS;
+        	adapter = new CitaAdapter(this, helper.getAll());
         }
+        if (adapter != null)
+        	setListAdapter(adapter);
         
     }
 
@@ -71,35 +85,55 @@ public class ListaCitas extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
     
-    @SuppressLint("NewApi")
-	public class CitaAdapter extends CursorAdapter{
+    
+protected class CitaAdapter extends ArrayAdapter<Cita> {
+		
+		private ArrayList<Cita> items;
+		
+        public CitaAdapter(Context context, ArrayList<Cita> citas) {
+            super(context, R.layout.fila_cita, citas);
+			this.items = citas;
+        }
+        
 
-    	public CitaAdapter(Context context, Cursor c) {
-    		super(context, c);
-    	}
+        /**
+         *Vamos llenando dato por posicion en la lista.
+         */
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+        	View v = convertView;
 
-    	@Override
-    	public void bindView(View row, Context ctx , Cursor cursor) {
-    		TextView descripcion = (TextView) row.findViewById(R.id.tv_row_descripcion);
-    		TextView lugar = (TextView) row.findViewById(R.id.tv_row_lugar);
-    		TextView fecha = (TextView) row.findViewById(R.id.tv_row_fecha);
-    		TextView avisar = (TextView) row.findViewById(R.id.tv_row_avisar);
-    		
-    		descripcion.setText(helper.getDescripcion(cursor));
-    		lugar.setText(helper.getLugar(cursor));
-    		fecha.setText(helper.getFechaStr(cursor));
-    		avisar.setText(helper.getAvisarStr(cursor));
+            if (v == null) {
+            	LayoutInflater vi;
+            	vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            	v = vi.inflate(R.layout.fila_cita, null);
+            }
+            Cita cita =  items.get(position);
+           
+            if (cita != null) {
+            	TextView descripcion = (TextView) v.findViewById(R.id.tv_row_descripcion);
+        		TextView lugar = (TextView) v.findViewById(R.id.tv_row_lugar);
+        		TextView fecha = (TextView) v.findViewById(R.id.tv_row_fecha);
+        		TextView avisar = (TextView) v.findViewById(R.id.tv_row_avisar);
 
-    	}
-
-    	@Override
-    	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-    		LayoutInflater inflater = LayoutInflater.from(context);
-    		View row = inflater.inflate(R.layout.fila_cita, parent, false);
-    		bindView(row, context, cursor);
-    		return(row);
-    	}
-
+                if (descripcion != null) {
+                	descripcion.setText(cita.get_descripcion());
+                }
+                if (lugar != null) {
+                	lugar.setText(cita.get_lugar());
+                }
+                if (lugar != null) {
+                	lugar.setText(cita.get_lugar());
+                }
+                if (fecha != null) {
+                	fecha.setText(CalendarioBasico.sdf.format(cita.get_fecha().getTime()));
+                }
+                if (avisar != null) {
+                	avisar.setText( String.format(getString(R.string.tv_row_avisar),cita.get_avisar()));
+                }
+            }
+            return v;
+        }      
     }
 
 }
