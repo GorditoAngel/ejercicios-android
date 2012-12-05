@@ -18,4 +18,5 @@
     <string name="picker_date_title">Día de la cita</string>
     <string name="picker_hour_title">Hora de la cita</string>
 	<string name="toast_faltan_campos">No están rellenados todos lo campos </string>
+	<string name="fallo_intent_nohaydatos">No hay datos suficientes para crear una cita nueva</string>
 </resources>

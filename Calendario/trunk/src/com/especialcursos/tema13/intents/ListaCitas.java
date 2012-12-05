@@ -39,6 +39,7 @@ public class ListaCitas extends ListActivity {
         
         helper = new BDCalendario(this);
         
+        //vemos que nos ha llegado en el intent
         String action_caller = getIntent().getAction();
         if (action_caller.equals("com.especialcursos.tema13.intents.VER_CITAS_HOY") ){
         	accion = VER_CITAS_HOY;
