@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,6 +19,8 @@ import android.util.Log;
 public class BDCalendario extends SQLiteOpenHelper{
 	
 	private static final String TAG = BDCalendario.class.getSimpleName();
+	
+	static private int VERSION = 5;
 	
 	static final String NOMBRE_DB = "calendario_db";
 	static final String TB_CALENDARIO = "Calendario";
@@ -37,7 +40,7 @@ public class BDCalendario extends SQLiteOpenHelper{
 	private Context contexto;
 	
 	public BDCalendario(Context context){
-		super (context, NOMBRE_DB, null, 1);
+		super (context, NOMBRE_DB, null, VERSION);
 		contexto = context;
 	}
 	
@@ -60,6 +63,7 @@ public class BDCalendario extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TB_CALENDARIO);
         //Se crea la nueva versión de la tabla
         db.execSQL(crear_tabla);
+        agregarDatosIniciales(db);
 		
 	}
 	
@@ -71,9 +75,27 @@ public class BDCalendario extends SQLiteOpenHelper{
 		citas.add(new Cita(0, "ir al ginmansio", "Odisey Gim",
 				 new GregorianCalendar(2012,11,30,19,00) , 0));
 		citas.add(new Cita(0, "Clase de estado sólido", "Facultad de Físicas",
-				 new GregorianCalendar(2012,12,3,19,30) , 60));
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,3,19,30) , 60));
 		citas.add(new Cita(0, "Cita con mi fisioterapeuta", "Getafe",
-				 new GregorianCalendar(2012,12,10,20,00) , 10));
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,10,20,00) , 10));
+		citas.add(new Cita(0, "Cita mes 1", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,10,20,00) , 10));
+		citas.add(new Cita(0, "Cita mes 2", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,15,20,00) , 10));
+		citas.add(new Cita(0, "Cita mes 3", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,1,20,00) , 10));
+		citas.add(new Cita(0, "Cita dia 1", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,5,20,01) , 10));
+		citas.add(new Cita(0, "Cita dia 2", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,5,5,00) , 10));
+		citas.add(new Cita(0, "Cita dia 3", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,5,7,01) , 10));
+		citas.add(new Cita(0, "Cita semana 1", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,8,7,01) , 10));
+		citas.add(new Cita(0, "Cita semana 2", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,7,7,01) , 10));
+		citas.add(new Cita(0, "Cita semana 3", "Getafe",
+				 new GregorianCalendar(2012,GregorianCalendar.DECEMBER,6,7,01) , 10));
 		
 		agregarCitas(citas, db);
 	}
@@ -113,10 +135,21 @@ public class BDCalendario extends SQLiteOpenHelper{
 		getWritableDatabase().insert(TB_CALENDARIO, null, cv);
 	}
 	
-	public Cursor getAll(){
-		return getReadableDatabase().query(TB_CALENDARIO,
+	public ArrayList<Cita> getAll(){
+		ArrayList<Cita> lista_citas = new ArrayList<Cita>();
+		
+		Cursor c = getReadableDatabase().query(TB_CALENDARIO,
 				new String[] {CITA_ID, CITA_DESCRIPCION, CITA_LUGAR, CITA_FECHA, CITA_AVISAR},
 				null, null, null, null, CITA_FECHA);
+		//Iteramos a traves de los registros del cursor
+		if (c.moveToFirst()) {
+			do{
+				Cita cita = new Cita(getId(c),getDescripcion(c),getLugar(c),
+						getFechaGC(c),getAvisar(c));
+				lista_citas.add(cita);
+		    }while (c.moveToNext());
+		}
+		return lista_citas.isEmpty() ? null : lista_citas;
 		
 //		return getReadableDatabase().rawQuery("SELECT " + CITA_ID + ", " +
 //				CITA_DESCRIPCION + ", " +
@@ -125,6 +158,79 @@ public class BDCalendario extends SQLiteOpenHelper{
 //				CITA_AVISAR + ", FROM " + TB_CALENDARIO +
 //				" ORDER BY " + CITA_FECHA,
 //				null);
+	}
+	
+	public ArrayList<Cita> getHoy(){
+		ArrayList<Cita> lista_citas = new ArrayList<Cita>();
+		
+		GregorianCalendar hoy = (GregorianCalendar) GregorianCalendar.getInstance();
+		int dia_hoy = hoy.get(GregorianCalendar.DAY_OF_MONTH);
+		int mes = hoy.get(GregorianCalendar.MONTH);
+		int ano = hoy.get(GregorianCalendar.YEAR);
+		
+		Cursor c = getReadableDatabase().query(TB_CALENDARIO,
+				new String[] {CITA_ID, CITA_DESCRIPCION, CITA_LUGAR, CITA_FECHA, CITA_AVISAR},
+				null, null, null, null, CITA_FECHA);
+		//Iteramos a traves de los registros del cursor
+		if (c.moveToFirst()) {
+			do{
+				Cita cita = new Cita(getId(c),getDescripcion(c),getLugar(c),
+						getFechaGC(c),getAvisar(c));
+				if (dia_hoy == cita.get_fecha().get(GregorianCalendar.DAY_OF_MONTH)&&
+						mes == cita.get_fecha().get(GregorianCalendar.MONTH) &&
+						ano == cita.get_fecha().get(GregorianCalendar.YEAR))
+					lista_citas.add(cita);
+		    }while (c.moveToNext());
+		}
+		return lista_citas.isEmpty() ? null : lista_citas;
+	}
+	
+	public ArrayList<Cita> getSemana(){
+		ArrayList<Cita> lista_citas = new ArrayList<Cita>();
+		
+		GregorianCalendar hoy = (GregorianCalendar) GregorianCalendar.getInstance();
+		int semana = hoy.get(GregorianCalendar.WEEK_OF_YEAR);
+		int mes = hoy.get(GregorianCalendar.MONTH);
+		int ano = hoy.get(GregorianCalendar.YEAR);
+		
+		Cursor c = getReadableDatabase().query(TB_CALENDARIO,
+				new String[] {CITA_ID, CITA_DESCRIPCION, CITA_LUGAR, CITA_FECHA, CITA_AVISAR},
+				null, null, null, null, CITA_FECHA);
+		//Iteramos a traves de los registros del cursor
+		if (c.moveToFirst()) {
+			do{
+				Cita cita = new Cita(getId(c),getDescripcion(c),getLugar(c),
+						getFechaGC(c),getAvisar(c));
+				if (semana == cita.get_fecha().get(GregorianCalendar.WEEK_OF_YEAR) &&
+						mes == cita.get_fecha().get(GregorianCalendar.MONTH) &&
+								ano == cita.get_fecha().get(GregorianCalendar.YEAR))
+					lista_citas.add(cita);
+		    }while (c.moveToNext());
+		}
+		return lista_citas.isEmpty() ? null : lista_citas;
+	}
+
+	public ArrayList<Cita> getMes(){
+		ArrayList<Cita> lista_citas = new ArrayList<Cita>();
+		
+		GregorianCalendar hoy = (GregorianCalendar) GregorianCalendar.getInstance();
+		int mes = hoy.get(GregorianCalendar.MONTH);
+		int ano = hoy.get(GregorianCalendar.YEAR);
+		
+		Cursor c = getReadableDatabase().query(TB_CALENDARIO,
+				new String[] {CITA_ID, CITA_DESCRIPCION, CITA_LUGAR, CITA_FECHA, CITA_AVISAR},
+				null, null, null, null, CITA_FECHA);
+		//Iteramos a traves de los registros del cursor
+		if (c.moveToFirst()) {
+			do{
+				Cita cita = new Cita(getId(c),getDescripcion(c),getLugar(c),
+						getFechaGC(c),getAvisar(c));
+				if (mes == cita.get_fecha().get(GregorianCalendar.MONTH) &&
+								ano == cita.get_fecha().get(GregorianCalendar.YEAR))
+					lista_citas.add(cita);
+		    }while (c.moveToNext());
+		}
+		return lista_citas.isEmpty() ? null : lista_citas;
 	}
 	
 	public int getId(Cursor c){
@@ -137,6 +243,12 @@ public class BDCalendario extends SQLiteOpenHelper{
 	
 	public String getLugar(Cursor c){
 		return c.getString(2);
+	}
+	
+	public GregorianCalendar getFechaGC(Cursor c){
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTimeInMillis(c.getLong(3));
+		return calendar;
 	}
 	
 	public long getFecha(Cursor c){
