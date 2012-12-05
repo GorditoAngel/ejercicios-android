@@ -1,7 +1,10 @@
 package com.especialcursos.tema13.intents;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+
+import com.especialcursos.tema13.intents.ListaCitas.CitaAdapter;
 
 import android.os.Bundle;
 
@@ -36,7 +39,7 @@ public class CalendarioBasico extends Activity {
 	static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MMMMM/yyyy HH:mm");
 	
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) { 	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario_basico);
         etDescripcion = (EditText) findViewById(R.id.et_titulo);
@@ -44,22 +47,76 @@ public class CalendarioBasico extends Activity {
         etAvisar = (EditText) findViewById(R.id.et_avisar);
         btFecha = (Button) findViewById(R.id.bt_fecha);
         
-        etAvisar.setText("0");
+        //Una vez que esta toda la parte visual definida
+        //vemos el intent que nos ha llamado a ver que tiene
+        String action_caller = getIntent().getAction();
+        helper = new BDCalendario(this);
+        //hay tres opciones + la de main. esta ultima solo abre el fomulario en blanco
+        //com.especialcursos.tema13.intents.CITA_NUEVA
+        //com.especialcursos.tema13.intents.CITA_GRABAR
+        //com.especialcursos.tema13.intents.LISTA_CITAS
         
+        if (action_caller.equals("com.especialcursos.tema13.intents.CITA_NUEVA") ||
+        		action_caller.equals("android.intent.action.MAIN")){
+        	introducirNuevaCita();
+        }else  if (action_caller.equals("com.especialcursos.tema13.intents.CITA_GRABAR") ){
+        	//tienen que venir los datos en el intent
+        	grabarNuevaCita(getIntent().getExtras());
+        }else  if (action_caller.equals("com.especialcursos.tema13.intents.LISTA_CITAS") ){
+        	//tiene que tener un intent que seleccione que tipo de lista hay que mostrar
+        	mostrarLista(getIntent().getExtras());
+        }
+    }
+
+    private void mostrarLista(Bundle extras) {
+		// Mirar que tipo de lista quiere
+    	String tipo_lista = extras.getString("tipo_lista");
+    	if (tipo_lista != null){
+    		if (tipo_lista.equals("hoy")) botonDia(null);
+    		if (tipo_lista.equals("semana")) botonSemana(null);
+    		if (tipo_lista.equals("mes")) botonMes(null);
+    	}else{
+    		Toast.makeText(this, R.string.fallo_intent_nohaydatos, Toast.LENGTH_SHORT).show();
+    		finish();
+    	}
+	}
+
+	private void grabarNuevaCita(Bundle extras) {
+		//cogemos todos los datos
+		String descripcion = extras.getString("descripcion");
+		String lugar = extras.getString("lugar");
+		long fecha = extras.getLong("fecha_inMilis");
+		int avisar = extras.getInt("avisar");
+		if ((descripcion == null) ||
+				(fecha == 0)){
+			Toast.makeText(this, R.string.fallo_intent_nohaydatos, Toast.LENGTH_SHORT).show();
+			// auna mala si no hay datos suficientes dejamos todo en blanco
+			introducirNuevaCita();
+		}else{
+			etDescripcion.setText(descripcion);
+			if (lugar != null) etLugar.setText(lugar);
+			if (avisar != 0) etAvisar.setText(avisar);
+			else etAvisar.setText("0");
+			
+			//delicado tratamiento de la fecha
+			this.fecha = new GregorianCalendar();
+			this.fecha.setTimeInMillis(fecha);
+			str_fecha = sdf.format(this.fecha.getTime());
+	    	btFecha.setText(str_fecha);
+	    	fecha_selecionada = true;
+	    	
+	    	
+		}
+	}
+
+	private void introducirNuevaCita() {
+		etAvisar.setText("0");
         fecha = new GregorianCalendar();
         str_fecha = null;
         fecha_selecionada = false;
-        
-        helper = new BDCalendario(this);
-        
-        
-        Intent intent = getIntent();
-        String action = intent.getAction();
-        
-        //Se se ha llamado desde lista
-    }
+	}
 
-    @Override
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_calendario_basico, menu);
         return true;
