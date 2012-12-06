@@ -4,5 +4,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_intents_calendario">Intents del Calendario</string>
-
+    <string name="tv_titulo">Descripcion de la cita</string>
+	<string name="bt_fecha">fecha</string>
+	<string name="bt_agregar">Guardar cita</string>
+	<string name="bt_dia">Citas del día</string>
+	<string name="bt_semana">Citas de la semana</string>
+	<string name="bt_mes">Citas del mes</string>
+	<string name="bt_nueva">Nueva cita</string>
+	<string name="toast_faltan_campos">No has introducido todos los campos</string>
 </resources>
