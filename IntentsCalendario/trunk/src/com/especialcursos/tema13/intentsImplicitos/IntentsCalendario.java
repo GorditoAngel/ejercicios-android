@@ -38,7 +38,7 @@ public class IntentsCalendario extends Activity {
         setContentView(R.layout.activity_intents_calendario);
         etDescripcion = (EditText) findViewById(R.id.et_titulo);
         btFecha = (Button) findViewById(R.id.bt_fecha);
-        
+        fecha = new GregorianCalendar();
         
         
     }
