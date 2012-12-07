@@ -18,7 +18,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="com.especialcursos.tema13.intents.CITA_NUEVA"/>
+            </intent-filter>
+            <intent-filter>
+            	<action android:name="com.especialcursos.tema13.intents.CITA_NUEVA"/>
                 <action android:name="com.especialcursos.tema13.intents.CITA_GRABAR"/>
                 <action android:name="com.especialcursos.tema13.intents.LISTA_CITAS" />
 				<category android:name="android.intent.category.DEFAULT" />
