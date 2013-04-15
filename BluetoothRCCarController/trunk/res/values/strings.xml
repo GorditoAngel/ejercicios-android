@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bluetooth RCCar Controller</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="x1">X</string>
+    <string name="y1">Y</string>
+    <string name="valor">000</string>
+    <string name="no_soporta_bluetooth">El dispositivo no soporta Bluetooth</string>
+    <string name="bluetooth_encendido">El Bluetooth se ha encendido correctamente</string>
+    <string name="bluetooth_cancelado">El bluetooth no ha podido ser activado. Salimos de la palicación</string>
+
+</resources>
