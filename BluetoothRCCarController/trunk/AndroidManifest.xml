@@ -3,9 +3,9 @@
     package="com.igserrano.bluetoothrccarcontroller"
     android:versionCode="1"
     android:versionName="1.0" >
-	
-	<uses-permission android:name="android.permission.BLUETOOTH" />
-    
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="17" />
@@ -14,18 +14,34 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-       	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         <activity
             android:name="com.igserrano.bluetoothrccarcontroller.ControlesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
             android:label="@string/app_name"
+            android:screenOrientation="landscape"
             android:theme="@@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.igserrano.bluetoothrccarcontroller.DeviceListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/select_device"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+        <activity
+            android:name="com.igserrano.bluetoothrccarcontroller.PresentacionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_presentacion"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.igserrano.bluetoothrccarcontroller.SeleccionControl"
+            android:label="@string/title_activity_seleccion_control" >
         </activity>
     </application>
 
